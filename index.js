@@ -35,14 +35,15 @@ el.innerText = "Goodbye";
 
 // fruits.style.color = "green";
 
-function createRainbow() {
-  let colors = document.querySelectorAll(".colors li");
+// function createRainbow() {
+let colors = document.querySelectorAll(".colors li");
 
-  for (let i = 0; i < colors.length; i++) {
-    console.log(colors[i].innerHTML);
-    colors[i].style.color = colors[i].innerHTML;
-  }
+for (let i = 0; i < colors.length; i++) {
+  // console.log(colors[i].innerHTML);
+  colors[i].style.color = colors[i].innerHTML;
+  colors[i].addEventListener("click", remove);
 }
+// }
 
 function test() {
   console.log("HI");
@@ -54,6 +55,28 @@ function add() {
 }
 
 function subtract() {
-  let el = document.querySelector(".score");
+  let el = document.querySelector("score");
   el.innerHTML--;
 }
+
+//Add new day
+let daysList = document.querySelector(".days");
+//Create our own elements
+let thurs = document.createElement("li");
+thurs.innerHTML = "Thursday";
+console.log(thurs);
+
+daysList.appendChild(thurs);
+
+function remove(e) {
+  //This is the color we choose
+  let elementToRemove = e.target;
+  //This is <ul class="colors">
+  let parent = e.target.parentNode;
+  //We're removing the chosen color from the ul
+  parent.removeChild(elementToRemove);
+  // console.log(parent);
+}
+
+let removeBtn = document.querySelector(".remove-btn");
+removeBtn.addEventListener("click", remove);
